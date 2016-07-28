@@ -14,7 +14,7 @@
 </head>
 
 <body ng-controller="mainCtrl">
-	<h1>{{name}}</h1>
+	<h1>{{ctrl.name}}</h1>
 	<ul>
 		<li>
 			<a href="template.html">template</a>
@@ -23,6 +23,9 @@
 			<a href="index.html">index</a>
 		</li>
 	</ul>
+	<div>
+		<input type="button" value="promise demo" ng-click="ctrl.promiseDemo();"></input>
+	</div>
 </body>
 
 </html>
