@@ -31,6 +31,22 @@
             });
 
             promise.then(function() {
+                    $log.log('then 3:', arguments);
+                    return $q.reject(arguments);
+                }).then(function() {
+                    $log.log('then resolve 3.1:', arguments);
+                }, function() {
+                    $log.log('then reject 3.1:', arguments);
+                }).then(function() {
+                    $log.log('then resolve 3.2:', arguments);
+                }, function() {
+                    $log.log('then reject 3.2:', arguments);
+                })
+                .finally(function() {
+                    $log.log('finally 3:', arguments);
+                });
+
+            promise.then(function() {
                     $log.log('then 2:', arguments);
                 })
                 .then(function() {
@@ -43,19 +59,6 @@
                 .then(function() {
                     $log.log('then 1.1:', arguments);
                 });
-
-            promise.then(function() {
-                $log.log('then 3:', arguments);
-                return $q.reject(arguments);
-            }).then(function() {
-                $log.log('then resolve 3.1:', arguments);
-            }, function() {
-                $log.log('then reject 3.1:', arguments);
-            }).then(function() {
-                $log.log('then resolve 3.2:', arguments);
-            }, function() {
-                $log.log('then reject 3.2:', arguments);
-            });
         }
 
         function getData() {
