@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html ng-app="myApp">
 
 <head>
 
@@ -8,13 +8,13 @@
 	<script type="text/javascript" src="libs/lodash/lodash.js"></script>
 	<script type="text/javascript" src="libs/jquery/jquery.js"></script>
 	<script type="text/javascript" src="libs/less/less.js"></script>
+	<script type="text/javascript" src="libs/angular/angular.js"></script>
 
-	<script type="text/javascript" src="js/dataTransfer.js"></script>
-
+	<script type="text/javascript" src="js/mainCtrl.js"></script>
 </head>
 
-<body>
-	<h1>Index</h1>
+<body ng-controller="mainCtrl">
+	<h1>{{name}}</h1>
 	<ul>
 		<li>
 			<a href="template.html">template</a>
