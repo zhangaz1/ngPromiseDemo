@@ -1,7 +1,8 @@
 ;
 (function() {
     mainCtrl.$inject = [
-        '$log', '$scope'
+        '$log', '$q', '$timeout',
+        '$scope',
     ];
 
     angular.module('myApp', [])
@@ -10,7 +11,8 @@
     return void(0);
 
     function mainCtrl(
-        $log, $scope
+        $log, $q, $timout,
+        $scope
     ) {
         var scope = $scope;
 
@@ -22,7 +24,14 @@
         return void(0);
 
         function promiseDemo() {
-            $log.log('promiseDemo');
+            $q.when(getData())
+                .then(function() {
+                    $log.log(arguments);
+                });
+        }
+
+        function getData() {
+            return 'data:xxx';
         }
     }
 
