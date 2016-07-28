@@ -27,8 +27,13 @@
             var promise = $q.when(getData());
 
             promise.finally(function() {
-                $log.log('finally:', arguments);
-            });
+                    $log.log('finally:', arguments);
+                })
+                .then(function() {
+                    $log.log('finally then resolve:', arguments);
+                }, function() {
+                    $log.log('finally then reject:', arguments);
+                });
 
             promise.then(function() {
                     $log.log('then 5:', arguments);
