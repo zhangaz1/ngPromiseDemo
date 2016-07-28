@@ -30,14 +30,47 @@
                 $log.log('finally:', arguments);
             });
 
+            var promise2 = promise.then(function() {
+                $log.log('then 4:', arguments);
+                return $q.reject(arguments);
+            });
+
+            promise2.then(function() {
+                    $log.log('then resolve 4.1:', arguments);
+                }, function() {
+                    $log.log('then reject 4.1:', arguments);
+                })
+                .then(function() {
+                    $log.log('then resolve 4.1.1:', arguments);
+                }, function() {
+                    $log.log('then reject 4.1.1:', arguments);
+                });
+
+            promise2.then(function() {
+                    $log.log('then resolve 4.2:', arguments);
+                    return promise;
+                }, function() {
+                    $log.log('then reject 4.2:', arguments);
+                })
+                .then(function() {
+                    $log.log('then resolve 4.2.1:', arguments);
+                }, function() {
+                    $log.log('then reject 4.2.1:', arguments);
+                })
+                .finally(function() {
+                    $log.log('finally 4:', arguments);
+                });
+
             promise.then(function() {
                     $log.log('then 3:', arguments);
                     return $q.reject(arguments);
-                }).then(function() {
+                })
+                .then(function() {
                     $log.log('then resolve 3.1:', arguments);
                 }, function() {
                     $log.log('then reject 3.1:', arguments);
-                }).then(function() {
+                })
+                .then(function() {
                     $log.log('then resolve 3.2:', arguments);
                 }, function() {
                     $log.log('then reject 3.2:', arguments);
