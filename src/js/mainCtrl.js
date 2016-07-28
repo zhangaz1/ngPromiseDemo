@@ -30,6 +30,28 @@
                 $log.log('finally:', arguments);
             });
 
+            promise.then(function() {
+                    $log.log('then 5:', arguments);
+                    return $q.reject(arguments);
+                })
+                .then(function() {
+                    $log.log('then resolve 5.1:', arguments);
+                })
+                .then(function() {
+                    $log.log('then resolve 5.2:', arguments);
+                }, function() {
+                    $log.log('then reject 5.2:', arguments);
+                })
+                .then(function() {
+                    $log.log('then resolve 5.3:', arguments);
+                }, function() {
+                    $log.log('then reject 5.3:', arguments);
+                })
+                .finally(function() {
+                    $log.log('finally 5:', arguments);
+                });
+
+
             var promise2 = promise.then(function() {
                 $log.log('then 4:', arguments);
                 return $q.reject(arguments);
