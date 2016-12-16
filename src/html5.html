@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<style type="text/css">
+		body {
+			position: absolute;
+			border: none;
+			padding: 0;
+			margin: 0;
+			bottom: 0;
+			top: 0;
+			right: 0;
+			left: 0;
+		}
+
+		#div1,
+		#div2 {
+			width: auto;
+			height: auto;
+			margin: 0px;
+			padding: 10px;
+			border: 1px solid red;
+		}
+
+		#div1 {
+			/*height: auto;*/
+			/*width: auto;*/
+			position: absolute;
+			top: 0;
+			bottom: 222px;
+			left: 0;
+			right: 0;
+			z-index: 3;
+		}
+
+		#div1 img {
+			display: none;
+			height: 100%;
+		}
+
+		#div2 {
+			position: absolute;
+			height: 200px;
+			bottom: 0;
+			left: 0;
+			right: 0;
+		}
+
+		#test {
+			position: relative;
+			top: 20px;
+			left: 30px;
+			height: 100%;
+			width: 100%;
+			background: green;
+		}
+
+		#test {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type="text/javascript">
+		function allowDrop(ev) {
+			// ev.preventDefault();
+		}
+
+		function drag(ev) {
+			ev.dataTransfer.setData("Text", ev.target.id);
+		}
+
+		function drop(ev) {
+			ev.preventDefault();
+			var data = ev.dataTransfer.getData("Text");
+			ev.target.appendChild(document.getElementById(data));
+		}
+	</script>
+</head>
+
+<body>
+
+	<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+		<!-- <img src="http://www.w3school.com.cn/i/w3school_logo_black.gif" draggable="true" ondragstart="drag(event)" id="drag1" /> -->
+	</div>
+	<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
+		<!-- <div id="test"></div> -->
+	</div>
+
+</body>
+
+</html>
